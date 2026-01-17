@@ -26,8 +26,18 @@ strs[i] 仅包含小写字母
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        
-    }
-};
+        vector<vector<string>>  resVec;
+        map<std::string ,vector<std::string>> strmap{};
+        for(auto& ele :strs){
+            std::string key=ele;
+            std::sort(key.begin(),key.end());
+            strmap[key].emplace_back(ele);
+        }
 
+        for(auto& pair : strmap){
+            resVec.emplace_back(pair.second);
+        }
+        return resVec;
+    }  
+};
 
